@@ -23,9 +23,9 @@ export default function Home() {
 
         <div className="mb-8 font-serif text-2xl leading-relaxed">
           <span className="text-gray-900">is a </span>
-          <span className="text-red-600">engineer, researcher,</span>
+          <span className="text-red-600">writer, engineer,</span>
           <span className="text-gray-900"> and </span>
-          <span className="text-red-600">writer</span>
+          <span className="text-red-600">researcher</span>
           <span className="text-gray-900">.</span>
         </div>
 
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <div className="space-y-12">
-          {articles.map((article) => (
+          {articles.slice(1).map((article) => (
             <article key={article.slug}>
               <h2 className="mb-4">
                 <Link
