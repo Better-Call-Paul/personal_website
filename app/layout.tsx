@@ -18,7 +18,7 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Paul Chan",
   description: "Technical blog about performance optimization, GPU computing, and distributed systems",
-    generator: 'v0.app'
+    icons: { icon: "/icon.png" }
 }
 
 export default function RootLayout({
