@@ -10,7 +10,7 @@ export default function About() {
       <main className="max-w-4xl mx-auto px-6 py-16">
         <div className="mb-8 w-full h-32 relative overflow-hidden">
           <Image
-            src="/images/design-mode/Screenshot%202025-10-27%20at%202.29.49%E2%80%AFPM.png"
+            src="/images/design-mode/about-header.png"
             alt="Performance visualization"
             fill
             className="object-cover object-center"

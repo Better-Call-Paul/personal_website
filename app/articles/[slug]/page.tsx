@@ -23,6 +23,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
       <main className="max-w-4xl mx-auto px-6 py-16">
         <article>
+          {article.heroImage && (
+            <div className="mb-8">
+              <Image
+                src={article.heroImage}
+                alt={article.title}
+                width={1200}
+                height={800}
+                className="w-full h-auto rounded-sm"
+                priority
+              />
+            </div>
+          )}
           <h1 className="font-serif text-4xl mb-8 text-gray-900 leading-tight">{article.title}</h1>
 
           <div className="prose prose-lg max-w-none text-gray-900 leading-relaxed space-y-6 text-justify">
