@@ -35,7 +35,7 @@ export default function About() {
 
             <p>
               These days I'm exploring how future GPU architectures might shift the balance between compute and
-              communication, half research, half educated guessing, and occasionally just me staring at PTX until it
+              communication, half research, half educated guessing, and occasionally just me staring at PTX documentation until it
               makes sense. I think that I've always been a performance engineer, as nothing is ever too early to optimize, and that also drew me to software as its leverage makes any efficiency increases maximally impactful. 
               This site is where I write about what I learn from working on GPU performance, inference
               engines, and try to understand, predict, and hopefully be apart of creating architectural shifts.
