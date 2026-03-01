@@ -173,7 +173,11 @@ export const articles: Article[] = [
       },
       {
         type: "paragraph",
-        text: "Each MI450 isn't a single monolithic chip, rather its a multi-chiplet package that is assembled together with CoWoS-L packaging. While the exact number of chips per CoWoS-L wafer is not public, we can use an estimate of 9 chips per CoWoS wafer which is the average across comparable Nvidia products. With that we get:",
+        text: "Each MI450 isn’t a single monolithic chip, rather its a multi-chiplet package that is assembled together with CoWoS-L packaging. The number of finished packages that are required is mainly dictated by interposer size, which is the silicon substrate that is beneath the compute dies and HBM stacks. As the transposer size is not public, it could range from 3.5x to 5.5x reticle depending on chiplet configuration and HBM stack count, with the associated packages per wafer shifting with that ratio. While the exact number of chips per CoWoS-L wafer is not public, we can estimate using 9 chips per CoWoS wafer which is the average across comparable Nvidia products.",
+      },
+      {
+        type: "paragraph",
+        text: "With that we get:"
       },
       {
         type: "image",
@@ -196,7 +200,7 @@ export const articles: Article[] = [
     excerpt: [
       "For decades, GPU performance optimization has been dominated by the memory wall problem. As we scale to multi-GPU and multi-node systems, a fundamental shift is occurring: the bottleneck is moving from memory bandwidth to inter-GPU communication.",
     ],
-    heroImage: "/images/gpu-network.jpg",
+    heroImage: undefined,
     content: [
       {
         type: "image",
@@ -311,7 +315,7 @@ export const articles: Article[] = [
     excerpt: [
       "Endless twitter threads, articles, and podcasts frequently declare the end of CUDA and NVIDIA’s dominance. The arguments typically hinge on three main claims: the rise of ASICs will render GPUs obsolete, a new software ecosystem will erode the CUDA moat, and that LLM based agents will make knowledge of CUDA and low-level implementations irrelevant. Yet, closer examination reveals that these predictions fail to capture the nuance and ongoing innovation within NVIDIA’s ecosystem.",
     ],
-    heroImage: "/images/cuda-castle.jpg",
+    heroImage: undefined,
     content: [
       {
         type: "image",
