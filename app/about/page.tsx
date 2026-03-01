@@ -29,7 +29,7 @@ export default function About() {
             </p>
 
             <p>
-              I've worked on systems at AppLovin, built CUDA primitives for the Llama 3 architecture,
+              I've worked on systems at AppLovin, and built CUDA primitives for the Llama 3 architecture,
               including attention and communication kernels.
             </p>
 
