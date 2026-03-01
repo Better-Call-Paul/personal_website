@@ -1,6 +1,7 @@
 export interface Article {
   slug: string
   title: string
+  date?: string
   excerpt: string[]
   sidenote?: string
   heroImage?: string
@@ -95,11 +96,16 @@ export const articles: Article[] = [
   {
     slug: "nvidia-true-moat-tsmc",
     title: "NVIDIA's True Moat in the Compute Wars: TSMC",
+    date: "February 28, 2026",
     excerpt: [
       "How NVIDIA Leverages TSMC allocation to Choke Out Rivals",
     ],
-    heroImage: "/images/nvidia_tsmc_moat_article/image_title.png",
     content: [
+      {
+        type: "image",
+        src: "/images/nvidia_tsmc_moat_article/image_title.png",
+        alt: "NVIDIA's True Moat in the Compute Wars: TSMC",
+      },
       {
         type: "paragraph",
         text: "Nvidia's moat is typically recognized as its CUDA software stack and ecosystem, but its true moat lies in its special relationship with TSMC. Having a relationship with TSMC is nothing out of the ordinary, as Nvidia, AMD, Google (TPU), and most ASIC providers all source greater than 90% of their wafers from TSMC. Yet, Nvidia's relationship with TSMC is far more than one of a customer to a provider. By leveraging its utter dominance of the datacenter-GPU market, Nvidia has been able to effectively dominate the allocation of both current TSMC wafer and packaging capacity and incremental capacity. As a result, any competitors seeking to ramp production of their GPUs find their potential production increases stifled and limited as they simply cannot get the necessary wafer allocation from TSMC.",
@@ -197,6 +203,7 @@ export const articles: Article[] = [
   {
     slug: "memory-bound-to-communication-bound",
     title: "The New Frontier of GPU Performance: From Memory Bound to Communication Bound",
+    date: "December 2, 2025",
     excerpt: [
       "For decades, GPU performance optimization has been dominated by the memory wall problem. As we scale to multi-GPU and multi-node systems, a fundamental shift is occurring: the bottleneck is moving from memory bandwidth to inter-GPU communication.",
     ],
@@ -312,6 +319,7 @@ export const articles: Article[] = [
   {
     slug: "demise-of-cuda-exaggerated",
     title: "The Demise of CUDA has been Greatly Exaggerated",
+    date: "April 5, 2025",
     excerpt: [
       "Endless twitter threads, articles, and podcasts frequently declare the end of CUDA and NVIDIA’s dominance. The arguments typically hinge on three main claims: the rise of ASICs will render GPUs obsolete, a new software ecosystem will erode the CUDA moat, and that LLM based agents will make knowledge of CUDA and low-level implementations irrelevant. Yet, closer examination reveals that these predictions fail to capture the nuance and ongoing innovation within NVIDIA’s ecosystem.",
     ],

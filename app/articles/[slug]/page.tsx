@@ -35,7 +35,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               />
             </div>
           )}
-          <h1 className="font-serif text-4xl mb-8 text-gray-900 leading-tight">{article.title}</h1>
+          <h1 className="font-serif text-4xl mb-3 text-gray-900 leading-tight">{article.title}</h1>
+          {article.date && (
+            <p className="font-serif text-gray-400 italic mb-8">{article.date}</p>
+          )}
 
           <div className="prose prose-lg max-w-none text-gray-900 leading-relaxed space-y-6 text-justify">
             {article.content.map((section, i) => (
