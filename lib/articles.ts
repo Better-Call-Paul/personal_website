@@ -16,8 +16,8 @@ export interface Article {
 
 export const articles: Article[] = [
   {
-    slug: "outperforming-cublas-blackwell",
-    title: "Outperforming cuBLAS on Blackwell",
+    slug: "outperforming-cublas-b200",
+    title: "Outperforming cuBLAS on B200",
     excerpt: [""],
     heroImage: "/images/b200.jpg",
     content: [
