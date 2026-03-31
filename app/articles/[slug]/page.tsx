@@ -3,6 +3,8 @@ import { notFound } from "next/navigation"
 import { articles } from "@/lib/articles"
 import { Navigation } from "@/components/navigation"
 import { TableOfContents } from "@/components/table-of-contents"
+import { WarpSpecializationDiagram } from "@/components/warp-specialization-diagram"
+import { SMArchitectureDiagram } from "@/components/sm-architecture-diagram"
 
 function slugify(text: string) {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
@@ -72,6 +74,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                         className={section.width ? "h-auto rounded mx-auto" : "w-full h-auto rounded"}
                         style={section.width ? { width: `${section.width}px` } : undefined}
                       />
+                    </div>
+                  )}
+                  {section.type === "component" && section.componentId === "warp-specialization" && (
+                    <div className="my-8">
+                      <WarpSpecializationDiagram />
+                    </div>
+                  )}
+                  {section.type === "component" && section.componentId === "sm-architecture" && (
+                    <div className="my-8">
+                      <SMArchitectureDiagram />
                     </div>
                   )}
                 </div>

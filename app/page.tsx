@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <div className="space-y-12">
-          {articles.slice(1).map((article) => (
+          {articles.map((article) => (
             <article key={article.slug}>
               <h2 className="mb-4">
                 <Link
