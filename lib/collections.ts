@@ -15,7 +15,7 @@ export interface Label {
 // ─── Define your labels here ─────────────────────────────────────────────────
 // Each label has a display name, emoji, and a Tailwind text color for the tag pill.
 export const labels: Label[] = [
-  { name: "Personal Sites", emoji: "\uD83D\uDCD1", color: "text-gray-900" },
+  { name: "Personal Websites", emoji: "\uD83D\uDCD1", color: "text-gray-900" },
   { name: "Essays",         emoji: "\u270F\uFE0F",  color: "text-gray-900" },
   { name: "Engineering",    emoji: "\uD83D\uDD27",  color: "text-gray-900" },
   { name: "Tools",          emoji: "\u2699\uFE0F",  color: "text-gray-900" },
@@ -32,7 +32,7 @@ export const labels: Label[] = [
 //   {
 //     title: "Ivory Tang",
 //     url: "https://ivorytang.com",
-//     labels: ["Personal Sites"],
+//     labels: ["Personal Websites"],
 //   },
 //
 export const collections: CollectionItem[] = [
@@ -44,7 +44,7 @@ export const collections: CollectionItem[] = [
   {
     title: "Eric Zhang",
     url: "https://www.ekzhang.com/",
-    labels: ["Personal Sites"],
+    labels: ["Personal Websites"],
   },
   {
     title: "Talos",
