@@ -2,6 +2,7 @@ export interface Article {
   slug: string
   title: string
   date?: string
+  draft?: boolean
   excerpt: string[]
   sidenote?: string
   heroImage?: string
@@ -15,10 +16,11 @@ export interface Article {
   }>
 }
 
-export const articles: Article[] = [
+const allArticles: Article[] = [
   {
     slug: "outperforming-cublas-b200",
     title: "Outperforming cuBLAS on B200",
+    draft: true,
     excerpt: [""],
     heroImage: "/images/b200.jpg",
     content: [
@@ -430,3 +432,7 @@ export const articles: Article[] = [
     ],
   },
 ]
+
+export const articles = process.env.NODE_ENV === 'development'
+  ? allArticles
+  : allArticles.filter(a => !a.draft)
