@@ -62,6 +62,12 @@ export const collections: CollectionItem[] = [
     labels: ["Markets"],
   },
   {
+    title: "Archive.today",
+    url: "https://archive.is/",
+    thumbnail: "/collections/archive-today.png",
+    labels: ["Tools"],
+  },
+  {
     title: "Making Software",
     url: "https://www.makingsoftware.com/",
     thumbnail: "/collections/making-software.png",
