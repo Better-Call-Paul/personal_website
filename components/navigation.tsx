@@ -35,6 +35,14 @@ export function Navigation() {
         >
           WORK
         </Link>
+        <Link
+          href="/collections"
+          className={`font-serif text-sm tracking-wider ${
+            pathname === "/collections" ? "text-red-600 hover:text-red-700" : "text-gray-900 hover:text-red-600"
+          }`}
+        >
+          COLLECTIONS
+        </Link>
       </nav>
     </header>
   )
