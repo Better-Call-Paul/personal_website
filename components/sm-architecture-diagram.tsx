@@ -19,22 +19,26 @@ function proj(x: number, y: number, d: number = 0): [number, number] {
 /* ─── Colour palette ─── */
 interface C3 { f: string; t: string; r: string }
 
+const STROKE = '#18E76E'
+const STROKE_W = 1.2
+const TEXT_FILL = '#0A3018'
+
 const COL: Record<string, C3> = {
-  sm:     { f: '#333333', t: '#444444', r: '#222222' },
-  l1i:    { f: '#D4942A', t: '#E8A83E', r: '#B07C18' },
-  sub:    { f: '#1A4858', t: '#255868', r: '#103848' },
-  l0:     { f: '#3A6080', t: '#4E7494', r: '#2A5070' },
-  warp:   { f: '#D08020', t: '#E49434', r: '#B06818' },
-  disp:   { f: '#A06018', t: '#B4742C', r: '#884E10' },
-  reg:    { f: '#4878A8', t: '#5C8CBC', r: '#386898' },
-  tmem:   { f: '#285868', t: '#3C6C7C', r: '#184858' },
-  cuda:   { f: '#5A7020', t: '#6E8434', r: '#4A6010' },
-  tensor: { f: '#5A7020', t: '#6E8434', r: '#4A6010' },
-  ldst:   { f: '#385878', t: '#4C6C8C', r: '#284868' },
-  sfu:    { f: '#802028', t: '#94343C', r: '#681018' },
-  tma:    { f: '#404040', t: '#545454', r: '#2E2E2E' },
-  l1d:    { f: '#40A028', t: '#54B43C', r: '#309018' },
-  tex:    { f: '#606060', t: '#747474', r: '#4C4C4C' },
+  sm:     { f: '#287848', t: '#3C9860', r: '#1C6038' },
+  l1i:    { f: '#6CF4A8', t: '#A0FFCC', r: '#4CD888' },
+  sub:    { f: '#1C5830', t: '#2A7840', r: '#144420' },
+  l0:     { f: '#44CC78', t: '#70E8A0', r: '#30B060' },
+  warp:   { f: '#58E490', t: '#88F8B8', r: '#40C874' },
+  disp:   { f: '#4CD880', t: '#78F0A8', r: '#38BC68' },
+  reg:    { f: '#54E088', t: '#84F4B4', r: '#3CC470' },
+  tmem:   { f: '#2C8850', t: '#44A868', r: '#207038' },
+  cuda:   { f: '#34A060', t: '#50C078', r: '#268848' },
+  tensor: { f: '#34A060', t: '#50C078', r: '#268848' },
+  ldst:   { f: '#309858', t: '#4CB878', r: '#248040' },
+  sfu:    { f: '#206838', t: '#348848', r: '#185028' },
+  tma:    { f: '#287840', t: '#3C9858', r: '#1C6030' },
+  l1d:    { f: '#6CF4A8', t: '#A0FFCC', r: '#4CD888' },
+  tex:    { f: '#2C8850', t: '#44A868', r: '#207040' },
 }
 
 /* ─── 3D Box primitive ─── */
@@ -57,11 +61,11 @@ function Box({ x, y, w, h, c, label, ls = 7.5, d = DEPTH, fw = 700 }: {
 
   return (
     <g>
-      <polygon points={pts(right)} fill={c.r} stroke="#0004" strokeWidth={0.3} />
-      <polygon points={pts(top)}   fill={c.t} stroke="#0004" strokeWidth={0.3} />
-      <polygon points={pts(front)} fill={c.f} stroke="#0004" strokeWidth={0.3} />
+      <polygon points={pts(right)} fill={c.r} stroke={STROKE} strokeWidth={STROKE_W} strokeLinejoin="round" />
+      <polygon points={pts(top)}   fill={c.t} stroke={STROKE} strokeWidth={STROKE_W} strokeLinejoin="round" />
+      <polygon points={pts(front)} fill={c.f} stroke={STROKE} strokeWidth={STROKE_W} strokeLinejoin="round" />
       {lines.length > 0 && (
-        <text textAnchor="middle" dominantBaseline="middle" fill="#fff"
+        <text textAnchor="middle" dominantBaseline="middle" fill={TEXT_FILL}
           fontSize={ls} fontWeight={fw} fontFamily="system-ui, sans-serif">
           {lines.map((l, i) => (
             <tspan key={i} x={cx} y={ty + i * lh}>{l}</tspan>
@@ -82,36 +86,36 @@ function SubBlock({ bx, by, delay = 0 }: { bx: number; by: number; delay?: numbe
 
   return (
     <g className="sm-anim" style={{ animationDelay: `${delay}s` }}>
-      {/* Background frame */}
-      <Box x={bx} y={by} w={W} h={17} c={COL.sub} d={DEPTH + 0.3} />
+      {/* Background frame — starts 1u above internals so its top face clears L0 */}
+      <Box x={bx} y={by - 1} w={W} h={21} c={COL.sub} d={DEPTH + 0.3} />
 
-      {/* Header bars — spaced out so 3D faces don't overlap */}
+      {/* Header bars — 1-unit gaps so 3D top faces never overlap */}
       <Box x={IX} y={by + 0.4} w={IW} h={0.9} c={COL.l0}
         label="L0 Instruction Cache" ls={6} />
-      <Box x={IX} y={by + 1.8} w={IW} h={0.9} c={COL.warp}
+      <Box x={IX} y={by + 2.3} w={IW} h={0.9} c={COL.warp}
         label="Warp Scheduler (32 thread/clk)" ls={5.5} />
-      <Box x={IX} y={by + 3.2} w={IW} h={0.9} c={COL.disp}
+      <Box x={IX} y={by + 4.2} w={IW} h={0.9} c={COL.disp}
         label="Dispatch Unit (32 thread/clk)" ls={5.5} />
-      <Box x={IX} y={by + 4.6} w={IW} h={1.2} c={COL.reg}
+      <Box x={IX} y={by + 6.1} w={IW} h={1.2} c={COL.reg}
         label="Register File (16,384 x 32-bit)" ls={6} />
-      <Box x={IX} y={by + 6.3} w={IW} h={1.2} c={COL.tmem}
+      <Box x={IX} y={by + 8.3} w={IW} h={1.2} c={COL.tmem}
         label="64KB Tensor Memory (TMEM)" ls={6} />
 
       {/* Compute cores */}
-      <Box x={IX} y={by + 8} w={7.5} h={7} c={COL.cuda}
+      <Box x={IX} y={by + 10.5} w={7.5} h={7} c={COL.cuda}
         label={['CUDA', 'CORES']} ls={10} />
-      <Box x={IX + 8} y={by + 8} w={IW - 8} h={7} c={COL.tensor}
+      <Box x={IX + 8} y={by + 10.5} w={IW - 8} h={7} c={COL.tensor}
         label={['TENSOR', 'CORES', '(5TH GEN)']} ls={9} />
 
       {/* LD/ST units */}
       {Array.from({ length: 8 }, (_, i) => (
         <Box key={i}
-          x={IX + i * LDST_W} y={by + 15.5} w={LDST_W - 0.15} h={1.1}
+          x={IX + i * LDST_W} y={by + 18.5} w={LDST_W - 0.15} h={1.1}
           c={COL.ldst} label="LD/ST" ls={4} fw={600} />
       ))}
 
       {/* SFU */}
-      <Box x={IX + 8 * LDST_W} y={by + 15.5} w={SFU_W} h={1.1} c={COL.sfu}
+      <Box x={IX + 8 * LDST_W} y={by + 18.5} w={SFU_W} h={1.1} c={COL.sfu}
         label="SFU" ls={6} />
     </g>
   )
@@ -122,8 +126,8 @@ export function SMArchitectureDiagram() {
   const W = 42
   const LX = 2
   const RX = 22
-  const TOP_Y = 5
-  const BOT_Y = 24
+  const TOP_Y = 7
+  const BOT_Y = 29
 
   return (
     <div className="w-full">
@@ -139,7 +143,7 @@ export function SMArchitectureDiagram() {
       ` }} />
 
       <div className="bg-gray-50 rounded-lg p-6 overflow-x-auto">
-        <svg viewBox="-10 -18 575 640" className="w-full h-auto min-w-[550px]"
+        <svg viewBox="-10 -18 575 760" className="w-full h-auto min-w-[550px]"
           xmlns="http://www.w3.org/2000/svg">
 
           {/* SM title bar */}
@@ -150,7 +154,7 @@ export function SMArchitectureDiagram() {
 
           {/* L1 Instruction Cache */}
           <g className="sm-anim" style={{ animationDelay: '0.1s' }}>
-            <Box x={1} y={2.8} w={W - 2} h={1.4} c={COL.l1i}
+            <Box x={1} y={3} w={W - 2} h={1.4} c={COL.l1i}
               label="L1 Instruction Cache" ls={9} />
           </g>
 
@@ -162,21 +166,21 @@ export function SMArchitectureDiagram() {
 
           {/* Tensor Memory Accelerator */}
           <g className="sm-anim" style={{ animationDelay: '0.6s' }}>
-            <Box x={1} y={42.5} w={W - 2} h={1.4} c={COL.tma}
+            <Box x={1} y={50.5} w={W - 2} h={1.4} c={COL.tma}
               label="Tensor Memory Accelerator (TMA)" ls={9} />
           </g>
 
           {/* L1 Data Cache / Shared Memory */}
           <g className="sm-anim" style={{ animationDelay: '0.7s' }}>
-            <Box x={1} y={44.5} w={W - 2} h={1.4} c={COL.l1d}
+            <Box x={1} y={52.9} w={W - 2} h={1.4} c={COL.l1d}
               label="256 KB L1 Data Cache / Shared Memory" ls={8} />
           </g>
 
           {/* Tex units */}
           <g className="sm-anim" style={{ animationDelay: '0.8s' }}>
             {[1, 11.3, 21.6, 32].map((tx, i) => (
-              <Box key={i} x={tx} y={46.5} w={9} h={1.3} c={COL.tex}
-                label="Tex" ls={8} />
+              <Box key={i} x={tx} y={55.3} w={9} h={1.3} c={COL.tex}
+                label="Texture Unit" ls={8} />
             ))}
           </g>
         </svg>
