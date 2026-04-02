@@ -16,6 +16,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://paulwillchan.com"),
   title: "Paul Chan",
   description: "Technical blog about performance optimization, GPU computing, and distributed systems",
     icons: { icon: "/icon.png" }
