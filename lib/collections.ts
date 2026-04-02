@@ -37,11 +37,6 @@ export const labels: Label[] = [
 //
 export const collections: CollectionItem[] = [
   {
-    title: "Love and Ambition",
-    url: "https://www.bykahlil.com/writing/love-and-ambition",
-    labels: ["Essays"],
-  },
-  {
     title: "Eric Zhang",
     url: "https://www.ekzhang.com/",
     labels: ["Personal Websites"],
@@ -72,5 +67,15 @@ export const collections: CollectionItem[] = [
     url: "https://www.makingsoftware.com/",
     thumbnail: "/collections/making-software.png",
     labels: ["Design"],
+  },
+  {
+    title: "Relentless Execution",
+    url: "https://www.rachelpark.xyz/writing/2025-01-05-relentless-execution",
+    labels: ["Essay"],
+  },
+  {
+    title: "Love and Ambition",
+    url: "https://www.bykahlil.com/writing/love-and-ambition",
+    labels: ["Essays"],
   },
 ]
